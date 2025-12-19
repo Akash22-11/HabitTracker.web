@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HealthTracker — Exercise & Habits</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Exercise and habits tracker — daily and monthly goals with calendar.">
+</head>
+<body>
+  <main id="app" class="container">
+    <header class="header">
+      <div class="brand">
+        <h1>HealthTracker</h1>
+        <p class="muted">Exercise, build habits, track monthly goals</p>
+      </div>
+      <div class="user-controls">
+        <input id="usernameInput" type="text" placeholder="Enter username" aria-label="username" />
+        <button id="loadUserBtn" class="btn">Load</button>
+        <button id="newUserBtn" class="btn ghost">New</button>
+      </div>
+    </header>
+
+    <section class="top-row">
+      <div class="calendar-card card" aria-label="calendar">
+        <div class="calendar-header">
+          <button id="prevMonth" class="nav">&lt;</button>
+          <h2 id="monthLabel">Month</h2>
+          <button id="nextMonth" class="nav">&gt;</button>
+        </div>
+        <div id="calendar" class="calendar"></div>
+      </div>
+
+      <div class="right-card">
+        <div class="card habits-card">
+          <div class="card-header">
+            <h3>Habits (daily)</h3>
+            <div class="card-actions">
+              <input id="newHabitName" placeholder="Add habit (e.g., Run 30 min)" />
+              <input id="newHabitColor" type="color" value="#4CAF50" title="Color"/>
+              <button id="addHabitBtn" class="btn small">Add</button>
+            </div>
+          </div>
+          <ul id="habitList" class="habit-list"></ul>
+        </div>
+
+        <div class="card goals-card">
+          <div class="card-header">
+            <h3>Monthly Goals</h3>
+            <div class="card-actions">
+              <input id="newGoalTitle" placeholder="Goal title (e.g., 20 runs)" />
+              <input id="newGoalTarget" type="number" min="1" placeholder="target" />
+              <button id="addGoalBtn" class="btn small">Add</button>
+            </div>
+          </div>
+          <ul id="goalsList" class="goals-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-row">
+      <div class="card details-card">
+        <h3 id="selectedDateLabel">Selected date: —</h3>
+        <div id="dayDetails" class="day-details">
+          <div id="dayHabits"></div>
+          <textarea id="dayNotes" placeholder="Notes for this day..."></textarea>
+          <div class="row">
+            <button id="saveNotesBtn" class="btn">Save Notes</button>
+            <button id="exportBtn" class="btn ghost">Export JSON</button>
+            <input id="importFile" type="file" accept="application/json" style="display:none" />
+            <button id="importBtn" class="btn ghost">Import JSON</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card info-card">
+        <h3>Quick Tips</h3>
+        <ul>
+          <li>Enter a username and press Load (or New) to start tracking.</li>
+          <li>Click a day in the calendar to view and mark habits for that day.</li>
+          <li>Monthly goals track completions across the month automatically.</li>
+          <li>Use Export/Import to move data between devices or to a server.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div id="celebration" class="celebration" aria-hidden="true"></div>
+
+    <footer class="footer muted">
+      <small>Made to be merged — minimal dependencies. Local demo uses localStorage per username.</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
